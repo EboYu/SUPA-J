@@ -1,0 +1,23 @@
+-library LLVMSvf
+-limitComments
+-f  // force overwrite
+-emptyStructsAsForwardDecls
+-mode Directory
+-runtime BridJ
+-package org.supa.binding
+-o $(DIR)/src/main/java
+-I$(DIR)/SVF/include/
+-I$(LLVM_SRC)/include/
+//-I/usr/include/x86_64-linux-gnu/
+//-I/home/yinbo/LLVM/llvm-9.0.0.src/build/lib/clang/9.0.0/include/
+-I/usr/include/x86_64-linux-gnu/c++/5/
+-I/usr/include/linux/
+$(DIR)/build/lib/libLLVMSvf.so
+$(DIR)/build/lib/libSvf.so
+$(DIR)/SVF/include/DDA/DDAPass.h  
+//$(DIR)/SVF/include/Util/*.h
+//$(DIR)/SVF/include/MemoryModel/*.h
+//$(DIR)/SVF/include/MSSA/*.h
+//$(DIR)/SVF/include/CUDD/*.h 
+//$(DIR)/SVF/include/SABER/*.h
+//$(DIR)/SVF/include/WPA/*.h

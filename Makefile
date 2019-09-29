@@ -28,5 +28,5 @@ src/main/java/org/supa/binding/SUPALibrary.java: jnaerator.jar config.jnaerator
 
 jnaerator.jar:
 ifeq ("$(wildcard jnaerator.jar)","")
-	wget http://jnaerator.googlecode.com/files/jnaerator-$(JNAERATOR_VERSION).jar -O $@
+	wget http://central.maven.org/maven2/com/nativelibs4java/jnaerator/0.12/jnaerator-0.12-shaded.jar -O $@
 endif

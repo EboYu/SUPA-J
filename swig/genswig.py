@@ -9,7 +9,7 @@ standard_include = '/usr/include/'
 pointerType = {'PointerAnalysis','Function','GlobalVariable', 'GlobalAlias', 'LLVMContext', 'Module', 'LLVMModuleSet', 'Instruction', 'Value', 'CallSite',
 			   'PointerType', 'BasicBlock', 'ConstantExpr', 'u32_t','PTACallGraph','PAG','PTAStat','CallGraphSCC','ICFG','CHGraph','TypeSystem','MemObj',
 			   'CallInst','PTACallGraphNode','PTDataTy','DiffPTDataTy','IncDFPTDataTy','SVFG','SVFGSCC','PAGNode','SVFGEdge','AndersenWaveDiff','DDAStat',
-			   'IndirectSVFGEdge','DirectSVFGEdge','LoadSVFGNode','StoreSVFGNode','AllocaInst','GepSVFGNode','AddrSVFGNode','DDAClient'}
+			   'IndirectSVFGEdge','DirectSVFGEdge','LoadSVFGNode','StoreSVFGNode','AllocaInst','GepSVFGNode','AddrSVFGNode','DDAClient','DominatorTree'}
 
 def header_include(name,path,std):
 	if std:

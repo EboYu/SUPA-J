@@ -15,10 +15,7 @@
 %pointer_class(SVFGEdge,SVFGEdgeP)
 %pointer_class(Value,ValueP)
 %pointer_class(SVFG,SVFGP)
-namespace std {
-%template(IntVector) vector<int>;
-%template(DoubleVector) vector<double>;
-}
+
 /*
  * @file: DDAPass.h
  * @author: Yulei Sui

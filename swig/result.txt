@@ -1,0 +1,9 @@
+make SRCDIR='' CXXSRCS='../SVF/lib/DDA/DDAPass.cpp' \
+SWIG_LIB_DIR='/home/yinbo/disk/workspace/swig/Lib' SWIGEXE='swig' \
+SWIGOPT='' TARGET='SUPA' INTERFACE='DDAPass.i' java_cpp
+make[1]: Entering directory '/home/yinbo/disk/workspace/SUPA-J/swig'
+env SWIG_LIB=/home/yinbo/disk/workspace/swig/Lib  swig -java -c++  -o DDAPass_wrap.cxx DDAPass.i
+g++ -c -fpic -I. -I/usr/include    ../SVF/lib/DDA/DDAPass.cpp DDAPass_wrap.cxx -I/home/yinbo/disk/workspace/SUPA-J/SVF/include/ -I/home/yinbo/LLVM/llvm-9.0.0.src/build/include -I/home/yinbo/LLVM/llvm-9.0.0.src/include -I"/opt/jdk1.8.0_191/include" -I"/opt/jdk1.8.0_191/include/linux"
+Makefile:183: recipe for target 'java_cpp' failed
+make[1]: Leaving directory '/home/yinbo/disk/workspace/SUPA-J/swig'
+Makefile:231: recipe for target 'build' failed

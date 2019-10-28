@@ -18,12 +18,12 @@ namespace std {
 %template(FunctionSetType) vector<Function*> ;
 %template(GlobalSetType) vector<GlobalVariable*> ;
 %template(AliasSetType) vector<GlobalAlias*> ;
-
 %template(FunDeclToDefMapTy) map<const Function*, Function*>;
 %template(FunDefToDeclsMapTy) map<const Function*, FunctionSetType> ;
 %template(GlobalDefToRepMapTy) map<const GlobalVariable*, GlobalVariable*> ;
 %template(StringVector) vector<std::string>;
 }
+%copyctor LLVMModuleSet;
 //===- SVFModule.h -- SVFModule class-----------------------------------------//
 //
 //                     SVF: Static Value-Flow Analysis
@@ -94,10 +94,15 @@ private:
 
 public:
     /// Constructor
+    %rename(LLVMModuleSetMOD) LLVMModuleSet(Module *mod);
+    %rename(LLVMModuleSetAMOD) LLVMModuleSet(Module &mod);
+    %rename(LLVMModuleSetMNV) LLVMModuleSet(const std::vector<std::string> &moduleNameVec);
+    LLVMModuleSet() {}
+    
     LLVMModuleSet(const std::vector<std::string> &moduleNameVec);
     LLVMModuleSet(Module *mod);
     LLVMModuleSet(Module &mod);
-    LLVMModuleSet() {}
+    
 
     void build(const std::vector<std::string> &moduleNameVec);
 
@@ -163,12 +168,14 @@ public:
     iterator begin() {
         return FunctionSet.begin();
     }
+    %rename(begin_const) begin() const;
     const_iterator begin() const {
         return FunctionSet.begin();
     }
     iterator end() {
         return FunctionSet.end();
     }
+    %rename(end_const) end() const;
     const_iterator end() const {
         return FunctionSet.end();
     }
@@ -176,12 +183,14 @@ public:
     global_iterator global_begin() {
         return GlobalSet.begin();
     }
+    %rename(global_begin_const) global_begin() const;
     const_global_iterator global_begin() const {
         return GlobalSet.begin();
     }
     global_iterator global_end() {
         return GlobalSet.end();
     }
+    %rename(global_end_const) global_end() const;
     const_global_iterator global_end() const {
         return GlobalSet.end();
     }
@@ -189,12 +198,15 @@ public:
     alias_iterator alias_begin() {
         return AliasSet.begin();
     }
+
+%rename(alias_begin_const) alias_begin() const;
     const_alias_iterator alias_begin() const {
         return AliasSet.begin();
     }
     alias_iterator alias_end() {
         return AliasSet.end();
     }
+%rename(alias_end_const) alias_end() const;
     const_alias_iterator alias_end() const {
         return AliasSet.end();
     }
@@ -232,6 +244,11 @@ private:
 
 public:
     /// Constructors
+    %rename(SVFModulePointer) SVFModule(Module *mod);
+    %rename(SVFModuleAddr) SVFModule(Module &mod);
+    %rename(SVFModuleMNV) SVFModule(const std::vector<std::string> &moduleNameVec);
+    
+    
     SVFModule(const std::vector<std::string> &moduleNameVec) {
         if (llvmModuleSet == NULL)
             llvmModuleSet = new LLVMModuleSet(moduleNameVec);
@@ -248,6 +265,8 @@ public:
         if (llvmModuleSet == NULL)
             llvmModuleSet = new LLVMModuleSet;
     }
+
+    
 
     static inline LLVMModuleSet *getLLVMModuleSet() {
         if (llvmModuleSet == NULL)
@@ -330,12 +349,14 @@ public:
     iterator begin() {
         return llvmModuleSet->begin();
     }
+    %rename(begin_const) begin() const;
     const_iterator begin() const {
         return llvmModuleSet->begin();
     }
     iterator end() {
         return llvmModuleSet->end();
     }
+    %rename(end_const) end() const;
     const_iterator end() const {
         return llvmModuleSet->end();
     }
@@ -370,6 +391,10 @@ public:
         return fun;
     }
 
+%rename(global_begin_const) global_begin() const;
+%rename(global_end_const) global_end() const;
+%rename(alias_begin_const) alias_begin() const;
+%rename(alias_end_const) alias_end() const;
     global_iterator global_begin() {
         return llvmModuleSet->global_begin();
     }
